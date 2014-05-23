@@ -1,0 +1,48 @@
+{
+  "license": "Apache II",
+  "source": "http://github.com/cernops/activemq",
+  "checksums": {
+    "Rakefile": "ea715fe0328d4fb4bc6de3aae2d67b11",
+    "manifests/network.pp": "5c118a76c8f8aa814fb6dbd82ade48a4",
+    "manifests/install.pp": "78b14d3e4fb43085c355adac4d6cf4f4",
+    "manifests/params.pp": "cc0cbe37dbd2cca8ecbc328802ff7a62",
+    "manifests/config.pp": "c9858d9de1c6a44b84e7fb8b5a751b9a",
+    "tests/init.pp": "401661128c93f331d6f2e9d801c03c64",
+    "README.md": "3b027680d196445a353acf9c6e336775",
+    "manifests/user.pp": "fa6c8b10a08b1db281bf49993ffba8d8",
+    "LICENSE": "6c4db32a2fa8717faffa1d4f10136f47",
+    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+    "manifests/service.pp": "f50b4116ac7b036639c0b52edefcc1a1",
+    "templates/activemq.xml.erb": "b579edc72f1dc4907af49d818ed61606",
+    "manifests/auth.pp": "f5c444ccc32a2d80e3d22f51a9075f5c",
+    "CHANGELOG": "d10b3a4004a5d033942e7a9b2d20b8ec",
+    "Modulefile": "61ba73377261a5839e1255ba3a78fc66",
+    "manifests/policy.pp": "d211055e766b302f1394a54b51dc3bf2",
+    "manifests/transport.pp": "5117c5d7b0719ac6fffc134175471d5a",
+    "manifests/init.pp": "e78f19983a3dd8e341e86e25dd96c24f",
+    "templates/credentials.properties.erb": "1279ad5295762c287a0425fb2155d9bd"
+  },
+  "name": "CERNOps-activemq",
+  "author": "CERNOps",
+  "summary": "Configures Apache MQ",
+  "description": "Configures Apache MQ",
+  "dependencies": [
+    {
+      "version_requirement": ">= 0.5.0",
+      "name": "richardc/datacat"
+    },
+    {
+      "version_requirement": ">= 1.2.2",
+      "name": "puppetlabs/java_ks"
+    },
+    {
+      "version_requirement": ">= 0.3.1",
+      "name": "erwbgy/limits"
+    }
+  ],
+  "project_page": "http://github.com/cernops/activemq",
+  "version": "0.0.1",
+  "types": [
+
+  ]
+}
