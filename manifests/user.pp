@@ -14,6 +14,9 @@
 #
 # === Parameters
 #
+# [*namespace]
+#   This is the first portion of the user identifier used in credentials.properties. Defaults to $title.
+#
 # [*username*]
 #   This "namevar" and is the ActiveMQ username to add.
 #
@@ -40,21 +43,32 @@
 #
 # Steve Traylen , CERN, steve.traylen@cern.ch
 #
-define activemq::user ($password, $username=$title,
-  $credentials = $::activemq::credentials,
-  $configfile = $::activemq::configfile, $groups = [] )
-{
+define activemq::user (
+  $password, 
+  $namespace    = undef, 
+  $username     = $title,
+  $credentials  = $::activemq::credentials,
+  $configfile   = $::activemq::configfile, 
+  $groups = [] 
+) {
   validate_string($username)
   validate_string($password)
   validate_string($credentials)
   validate_string($configfile)
   validate_array($groups)
+  
+  # Logic to ensure backwards compatibility on adding a $user variable
+  $real_namespace = $namespace ?{
+    undef   => $username,
+    default => $namespace,
+  }
+  validate_string($real_namespace)
 
   # Fragment for credentials file
   datacat_fragment{"credentials_${username}":
     target => $credentials,
     data   => { users =>
-                [ {'username'  => $username, 'password'  => $password
+                [ {'namespace' => $real_namespace, 'username'  => $username, 'password'  => $password
                   }
                 ]
               }
@@ -64,7 +78,7 @@ define activemq::user ($password, $username=$title,
   datacat_fragment{"users_${username}":
     target => $configfile,
     data   => { users =>
-                [ {'username'  => $username, 'password'  => $password, 'groups'    => $groups
+                [ {'namespace' => $real_namespace, 'username'  => $username, 'password'  => $password, 'groups'    => $groups
                   }
                 ]
               }

@@ -7,7 +7,7 @@ class activemq::service inherits activemq {
   # ActiveMQ 5.9 drops the need for this, 
   # version could be obtained from fact...
   $subscription = $amqrestart ? {
-     true  => File[$configfile],
+     true  => File[$configfile,$credentials],
      false => undef
   }
 
